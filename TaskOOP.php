@@ -1,159 +1,221 @@
-<?php
+<?php 
 
-class Lingkaran
-{
+class Bangun_Datar {
+	public $name;
+	public $caption;
+	public $basetype;
+	
+	public function __construct( $nm , $capt , $bt){
+		$this->name = $nm;
+		$this->caption = $capt;
+		$this->basetype = $bt;
+	}
+	
+	public function enlarge( int $scale){}	
 
-    public float $jari;
+	public function shrink( int $scale){}
 
-    public function __construct(float $jari)
-    {
-        $this->jari = $jari;
+	public function area(){
+		$val_area = 0;
+		return $val_area;
+	}
+
+	public function circumference(){
+		$val_circumference = 0;
+		return $val_circumference;
+	}
+
+    
+    public function describetype(){
+        $steks = "";
+        if ( $this->basetype == 1){
+            $steks = "Lingkaran";
+        } else if ( $this->basetype == 2){
+            $steks = "Persegi";
+        } else {
+            $steks = "Persegi panjang";
+        }
+        return $steks;
     }
 
-    public function Area()
-    {
-        $phi = 3.14;
-        $r = $this->jari;
+}	
 
-        $hasil = $phi * $r;
 
-        echo $hasil . PHP_EOL;
+class Lingkaran extends Bangun_Datar {
+
+    public $radius;
+    private $phi_value = 3.14;
+
+    public function __construct( $nm , $capt , $rad ){
+        parent::__construct($nm , $capt , 1);
+        $this->radius = $rad;
     }
 
-    public function Circumference()
-    {
-        $phi = 3.14;
-        $r = $this->jari;
+    public function enlarge( int $scale){
+        $r = $this->radius;
+        $newrad = $r * $scale;
+        $this->radius = $newrad;
+    }	
 
-        $hasil = $phi * $r * $r;
-
-        echo $hasil . PHP_EOL;
+    public function shrink( int $scale){
+        if ($scale <= 0){
+            $this->radius = 0;
+        } else {
+            $r = $this->radius;
+            $newrad = $r / $scale;
+            $this->radius = $newrad;
+        }
     }
 
-    public function Enlarge(int $scale)
-    {
-        $jari = $this->jari;
+	public function area(){
+        $phi = $this->phi_value;
+        $r = $this->radius; 
+		$val_area = $phi * ( $r * $r) ;
+		return $val_area;
+	}
 
-        $hasil = $jari * $scale;
+	public function circumference(){
+        $phi = $this->phi_value;
+        $r = $this->radius; 
+		$val_circumference =  2 * $phi * $r;
+		return $val_circumference;
+	}
+}  
 
-        echo "Jari-jari yang telah diperbesar adalah " . $hasil . PHP_EOL;
+
+class Persegi extends Bangun_Datar {
+
+    public $sisi;
+
+    public function __construct( $nm , $capt , $ss ){
+        parent::__construct($nm , $capt , 2);
+        $this->sisi = $ss;
     }
 
-    public function Shrink(int $scale)
-    {
-        $jari = $this->jari;
-
-        $hasil = $jari / $scale;
-
-        echo "Jari-jari yang telah diperkecil adalah " . $hasil . PHP_EOL;
-    }
-}
-
-class Persegi
-{
-    public float $sisi;
-
-    public function __construct(float $sisi)
-    {
-        $this->sisi = $sisi;
-    }
-
-    public function Area()
-    {
+    public function enlarge( int $scale){
         $s = $this->sisi;
+        $new_sisi = $s * $scale;
+        $this->sisi = $new_sisi;
+    }	
 
-        $hasil = $s * $s;
-
-        echo $hasil . PHP_EOL;
+    public function shrink( int $scale){
+        if ($scale <= 0){
+            $this->sisi = 0;
+        } else {
+            $s = $this->sisi;
+            $new_sisi = $this->sisi / $scale;
+            $this->sisi = $new_sisi;
+        }
     }
 
-    public function Circumference()
-    {
+	public function area(){
         $s = $this->sisi;
+		$val_area = $s * $s;
+		return $val_area;
+	}
 
-        $hasil = 4 * $s;
+	public function circumference(){
+        $s = $this->sisi;
+		$val_circumference =  4 * $s;
+		return $val_circumference;
+	}
+} 
 
-        echo $hasil . PHP_EOL;
+
+
+ class Persegi_Panjang extends Bangun_Datar {
+
+    public $panjang;
+    public $lebar;
+
+    public function __construct( $nm , $capt , $p , $l ){
+        parent::__construct($nm , $capt , 3);
+        $this->panjang = $p;
+        $this->lebar = $l;
+
     }
 
-    public function Enlarge(int $scale)
-    {
-        $sisi = $this->sisi;
+    public function enlarge( int $scale){
+        $p = $this->panjang;
+        $new_pjg = $p * $scale;
 
-        $hasil = $sisi * $scale;
+        $l = $this->lebar;
+        $new_lbr = $l * $scale;
 
-        echo "Sisi yang telah diperbesar adalah " . $hasil . PHP_EOL;
+        $this->panjang = $new_pjg;
+        $this->lebar = $new_lbr;
+    }	
+
+    public function shrink( int $scale){
+        if ($scale <= 0){
+            $this->panjang = 0;
+            $this->lebar = 0;
+        } else {
+            $p = $this->panjang;
+            $l = $this->lebar;
+
+            $new_pjg = $p / $scale;
+            $new_lbr = $l / $scale;
+            $this->panjang = $new_pjg;
+            $this->lebar = $new_lbr;
+        }
     }
 
-    public function Shrink(int $scale)
-    {
-        $sisi = $this->sisi;
+	public function area(){
+        $p = $this->panjang;
+        $l = $this->lebar;
+		$val_area = $p * $l;
+		return $val_area;
+	}
 
-        $hasil = $sisi / $scale;
+	public function circumference(){
+        $p = $this->panjang;
+        $l = $this->lebar;
+		$val_circumference =  (2 * $p) + ( 2 * $l);
+		return $val_circumference;
+	}
+} 
 
-        echo "Sisi yang telah diperkecil adalah " . $hasil . PHP_EOL;
-    }
+
+class Descriptor{
+   public static function describe( $obj_shape ){
+     $teks = "Bentuk bangun ini adalah ".$obj_shape->describetype();
+     $teks = $teks . " yang memiliki luas ".sprintf("%.2f", $obj_shape->area());
+     $teks = $teks . " dan keliling ".sprintf("%.2f", $obj_shape->circumference());
+     echo $teks."\n";
+   }
 }
 
-class PersegiPanjang
-{
-    public float $panjang;
-    public float $lebar;
+//obyek lingkaran
+$lingkaran_satu = new Lingkaran("l01","Lingkaran 01",30);
+echo "Luas lingkaran (".$lingkaran_satu->caption.") adalah = ".sprintf("%.2f", $lingkaran_satu->area());
+echo "  ";
+echo "Keliling lingkaran (".$lingkaran_satu->caption.") adalah = ".sprintf("%.2f", $lingkaran_satu->circumference());
+echo "\n";
 
-    public function __construct(float $panjang, float $lebar)
-    {
-        $this->panjang = $panjang;
-        $this->lebar = $lebar;
-    }
+//obyek persegi
+$persegi_satu = new Persegi("p01","Persegi 01",10);
+echo "Luas persegi (".$persegi_satu->caption.") adalah = ".sprintf("%.2f", $persegi_satu->area());
+echo "  ";
+echo "Keliling persegi (".$persegi_satu->caption.") adalah = ".sprintf("%.2f", $persegi_satu->circumference());
+echo "\n";
 
-    public function Area()
-    {
-        $p = $this->panjang;
-        $l = $this->lebar;
+//obyek persegi panjang
+$persegi_pjg_satu = new Persegi_Panjang("pp01","Persegi Panjang 01",20,10);
+echo "Luas persegi panjang (".$persegi_pjg_satu->caption.") adalah = ".sprintf("%.2f", $persegi_pjg_satu->area());
+echo "  ";
+echo "Keliling persegi panjang(".$persegi_pjg_satu->caption.") adalah = ".sprintf("%.2f", $persegi_pjg_satu->circumference());
+echo "\n";
 
-        $hasil = $p * $l;
+//panggil descriptor dengan parameter berbentuk lingkaran
+Descriptor::describe($lingkaran_satu);
 
-        echo $hasil . PHP_EOL;
-    }
+//panggil descriptor dengan parameter berbentuk persegi
+Descriptor::describe($persegi_satu);
 
-    public function Circumference()
-    {
-        $p = $this->panjang;
-        $l = $this->lebar;
+//panggil descriptor dengan parameter berbentuk persegi panjang
+Descriptor::describe($persegi_pjg_satu);
 
-        $hasil = 2 * ($p + $l);
+?>
 
-        echo $hasil . PHP_EOL;
-    }
-
-    public function Enlarge(int $scale)
-    {
-        $p = $this->panjang;
-        $l = $this->lebar;
-
-        $pScaled = $p * $scale;
-        $lScaled = $l * $scale;
-
-        echo "Panjang yang telah diperbesar adalah " . $pScaled . "\n" . PHP_EOL;
-        echo "Lebar yang telah diperbesar adalah " . $lScaled . PHP_EOL;
-    }
-
-    public function Shrink(int $scale)
-    {
-        $p = $this->panjang;
-        $l = $this->lebar;
-
-        $pShrunk = $p / $scale;
-        $lShrunk = $l / $scale;
-
-        echo "Panjang yang telah diperkecil adalah " . $pShrunk . "\n" . PHP_EOL;
-        echo "Lebar yang telah diperkecil adalah " . $lShrunk . PHP_EOL;
-    }
-}
-
-// $Lingkaran = new Lingkaran(25);
-// echo $Lingkaran->shrink(5);
-// $Persegi = new Persegi(5);
-// echo $Persegi->Area();
-$PersegiPanjang = new PersegiPanjang(4, 6);
-echo $PersegiPanjang->Shrink(2);
+ 
