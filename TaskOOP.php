@@ -17,7 +17,7 @@ class Lingkaran
 
         $hasil = $phi * $r;
 
-        echo $hasil;
+        echo $hasil . PHP_EOL;
     }
 
     public function Circumference()
@@ -27,7 +27,7 @@ class Lingkaran
 
         $hasil = $phi * $r * $r;
 
-        echo $hasil;
+        echo $hasil . PHP_EOL;
     }
 
     public function Enlarge(int $scale)
@@ -36,7 +36,7 @@ class Lingkaran
 
         $hasil = $jari * $scale;
 
-        echo "Jari-jari yang telah diperbesar adalah " . $hasil;
+        echo "Jari-jari yang telah diperbesar adalah " . $hasil . PHP_EOL;
     }
 
     public function Shrink(int $scale)
@@ -45,7 +45,7 @@ class Lingkaran
 
         $hasil = $jari / $scale;
 
-        echo "Jari-jari yang telah diperkecil adalah " . $hasil;
+        echo "Jari-jari yang telah diperkecil adalah " . $hasil . PHP_EOL;
     }
 }
 
@@ -64,7 +64,7 @@ class Persegi
 
         $hasil = $s * $s;
 
-        echo $hasil;
+        echo $hasil . PHP_EOL;
     }
 
     public function Circumference()
@@ -73,7 +73,7 @@ class Persegi
 
         $hasil = 4 * $s;
 
-        echo $hasil;
+        echo $hasil . PHP_EOL;
     }
 
     public function Enlarge(int $scale)
@@ -82,7 +82,7 @@ class Persegi
 
         $hasil = $sisi * $scale;
 
-        echo "Sisi yang telah diperbesar adalah " . $hasil;
+        echo "Sisi yang telah diperbesar adalah " . $hasil . PHP_EOL;
     }
 
     public function Shrink(int $scale)
@@ -91,7 +91,7 @@ class Persegi
 
         $hasil = $sisi / $scale;
 
-        echo "Sisi yang telah diperkecil adalah " . $hasil;
+        echo "Sisi yang telah diperkecil adalah " . $hasil . PHP_EOL;
     }
 }
 
@@ -113,7 +113,7 @@ class PersegiPanjang
 
         $hasil = $p * $l;
 
-        echo $hasil;
+        echo $hasil . PHP_EOL;
     }
 
     public function Circumference()
@@ -123,7 +123,7 @@ class PersegiPanjang
 
         $hasil = 2 * ($p + $l);
 
-        echo $hasil;
+        echo $hasil . PHP_EOL;
     }
 
     public function Enlarge(int $scale)
@@ -134,8 +134,8 @@ class PersegiPanjang
         $pScaled = $p * $scale;
         $lScaled = $l * $scale;
 
-        echo "Panjang yang telah diperbesar adalah " . $pScaled . "\n";
-        echo "Lebar yang telah diperbesar adalah " . $lScaled;
+        echo "Panjang yang telah diperbesar adalah " . $pScaled . "\n" . PHP_EOL;
+        echo "Lebar yang telah diperbesar adalah " . $lScaled . PHP_EOL;
     }
 
     public function Shrink(int $scale)
@@ -146,8 +146,8 @@ class PersegiPanjang
         $pShrunk = $p / $scale;
         $lShrunk = $l / $scale;
 
-        echo "Panjang yang telah diperkecil adalah " . $pShrunk . "\n";
-        echo "Lebar yang telah diperkecil adalah " . $lShrunk;
+        echo "Panjang yang telah diperkecil adalah " . $pShrunk . "\n" . PHP_EOL;
+        echo "Lebar yang telah diperkecil adalah " . $lShrunk . PHP_EOL;
     }
 }
 
