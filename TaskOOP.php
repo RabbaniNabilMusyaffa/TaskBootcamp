@@ -179,7 +179,7 @@ class Persegi extends Bangun_Datar {
 
 class Descriptor{
    public static function describe( $obj_shape ){
-     $teks = "Bentuk bangun ini adalah ".$obj_shape->describetype();
+     $teks = "Bangun datar ini adalah ".$obj_shape->describetype();
      $teks = $teks . " yang memiliki luas ".sprintf("%.2f", $obj_shape->area());
      $teks = $teks . " dan keliling ".sprintf("%.2f", $obj_shape->circumference());
      echo $teks."\n";
