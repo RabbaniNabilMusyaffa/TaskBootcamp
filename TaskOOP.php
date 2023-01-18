@@ -33,7 +33,7 @@ class Bangun_Datar {
         } else if ( $this->basetype == 2){
             $steks = "Persegi";
         } else {
-            $steks = "Persegi panjang";
+            $steks = "Persegi Panjang";
         }
         return $steks;
     }
